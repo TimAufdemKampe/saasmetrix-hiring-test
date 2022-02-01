@@ -7,6 +7,6 @@ const client = axios.create({
 });
 
 export const api = {
-  getMembers: (extraQuery?: string): unknown =>
+  getMembers: (extraQuery?: string): any =>
     client.get("?results=100&seed=" + API_SEED + (extraQuery || "")),
 };
