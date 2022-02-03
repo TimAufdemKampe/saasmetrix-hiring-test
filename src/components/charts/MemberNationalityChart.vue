@@ -12,36 +12,24 @@ export default defineComponent({
   async mounted(): Promise<void> {
     const response = await api.getMembers();
     const members: Member[] = response.data.results;
-    const nationalities: string[] = [];
     let nationalityCounts: Record<string, number> = {};
 
     members.forEach((member) => {
-      if (!nationalities.includes(member.nat)) {
-        nationalities.push(member.nat);
-      }
+      const { [member.nat]: count } = nationalityCounts;
+
+      if (!count) {
+        nationalityCounts = {
+          ...nationalityCounts,
+          [member.nat]: 1,
+        };
+      } else
+        nationalityCounts = {
+          ...nationalityCounts,
+          [member.nat]: nationalityCounts[member.nat] + 1,
+        };
     });
 
-    members.forEach((member) => {
-      if (nationalities.includes(member.nat)) {
-        const nationality: string =
-          nationalities.find(
-            (nationality: string) => nationality === member.nat
-          ) || "error";
-
-        const { [nationality]: count } = nationalityCounts;
-
-        if (count) {
-          nationalityCounts = {
-            ...nationalityCounts,
-            [nationality]: nationalityCounts[nationality] + 1,
-          };
-        } else
-          nationalityCounts = {
-            ...nationalityCounts,
-            [nationality]: 1,
-          };
-      }
-    });
+    Object.entries(nationalityCounts).sort((a, b) => b[1] - a[1]);
 
     const options = {
       chart: {
@@ -56,14 +44,22 @@ export default defineComponent({
       },
       series: [
         {
-          data: Object.values(nationalityCounts),
+          data: Object.entries(nationalityCounts)
+            .sort((a, b) => b[1] - a[1])
+            .map((entry) => {
+              return entry[1];
+            }),
         },
       ],
       dataLabels: {
         enabled: true,
       },
       xaxis: {
-        categories: Object.keys(nationalityCounts),
+        categories: Object.entries(nationalityCounts)
+          .sort((a, b) => b[1] - a[1])
+          .map((entry) => {
+            return entry[0];
+          }),
       },
     };
 
