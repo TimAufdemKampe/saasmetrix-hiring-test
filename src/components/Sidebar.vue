@@ -5,19 +5,26 @@
       <router-link class="text-decoration" :to="{ name: 'Members' }">
         <el-menu-item class="menu-item" index="0">
           <el-icon><stamp /></el-icon>
-          <span>Benutzer</span>
+          <span>Benutzer Übersicht</span>
+        </el-menu-item>
+      </router-link>
+      <Divider />
+      <router-link class="text-decoration" :to="{ name: 'MemberAnalytics' }">
+        <el-menu-item class="menu-item" index="1">
+          <el-icon><stamp /></el-icon>
+          <span>Benutzer Analytics</span>
         </el-menu-item>
       </router-link>
       <Divider />
       <router-link class="text-decoration" to="/">
-        <el-menu-item class="menu-item" index="1">
+        <el-menu-item class="menu-item" index="2">
           <el-icon><SoldOut /></el-icon>
           <span>Zahlungen</span>
         </el-menu-item>
       </router-link>
       <Divider />
       <router-link class="text-decoration" to="/">
-        <el-menu-item class="menu-item" index="2">
+        <el-menu-item class="menu-item" index="3">
           <el-icon><Document /></el-icon>
           <span>Anfragen</span>
         </el-menu-item>
@@ -36,7 +43,7 @@ import Divider from "../components/Divider.vue";
   height: 100vw;
   margin: 10px;
   padding-right: 10px;
-  border-right: 1px solid #2c3e50;
+  border-right: 1px solid rgba(53, 67, 80, 0.2);
 }
 .borderDelete {
   border: none;

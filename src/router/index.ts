@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from "vue-router";
-import Members from "../views/members/Members.vue";
-import MemberDetails from "../views/members/MemberDetails.vue";
+import Members from "@/views/members/Members.vue";
+import MemberAnalytics from "@/views/members/MembersAnalytics.vue";
+import MemberDetails from "@/views/members/MemberDetails.vue";
 import NotFound from "@/views/NotFound.vue";
 
 const routes: Array<RouteRecordRaw> = [
@@ -8,6 +9,11 @@ const routes: Array<RouteRecordRaw> = [
     path: "/members",
     name: "Members",
     component: Members,
+  },
+  {
+    path: "/members/analityics",
+    name: "MemberAnalytics",
+    component: MemberAnalytics,
   },
   {
     path: "/members/:email",

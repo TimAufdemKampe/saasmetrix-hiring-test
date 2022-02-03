@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
-    <el-col :span="4">
-      <h3>Benutzer Details</h3>
+    <el-col :span="6">
+      <h1>Benutzer Details</h1>
     </el-col>
     <el-col :span="6" style="margin: auto 0">
       <el-button @click="$router.push({ name: 'Members' })"

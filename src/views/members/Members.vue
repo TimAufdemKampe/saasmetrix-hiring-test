@@ -1,5 +1,5 @@
 <template>
-  <h1>Members</h1>
+  <h1>Benutzer Übersicht</h1>
   <div v-if="!loading && members">
     <el-row :gutter="20">
       <el-col :span="4">
@@ -90,7 +90,6 @@ export default defineComponent({
   async created(): Promise<void> {
     this.loading = true;
     const response = await api.getMembers();
-    console.log(response.data.results);
     this.members = response.data.results;
     this.loading = false;
   },
