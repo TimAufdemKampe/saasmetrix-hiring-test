@@ -6,21 +6,22 @@
 import { defineComponent } from "vue";
 import ApexCharts from "apexcharts";
 import { api } from "@/api";
+import { Member } from "@/types/member.type";
 
 export default defineComponent({
   async mounted(): Promise<void> {
     const response = await api.getMembers();
-    const members = response.data.results;
+    const members: Member[] = response.data.results;
     const nationalities: string[] = [];
     let nationalityCounts: Record<string, number> = {};
 
-    members.forEach((member: any) => {
+    members.forEach((member) => {
       if (!nationalities.includes(member.nat)) {
         nationalities.push(member.nat);
       }
     });
 
-    members.forEach((member: any) => {
+    members.forEach((member) => {
       if (nationalities.includes(member.nat)) {
         const nationality: string =
           nationalities.find(
@@ -41,10 +42,6 @@ export default defineComponent({
           };
       }
     });
-
-    console.log(nationalities);
-    console.log(nationalityCounts);
-    console.log(Object.values(nationalityCounts));
 
     const options = {
       chart: {
@@ -75,7 +72,7 @@ export default defineComponent({
       options
     );
 
-    chart.render();
+    await chart.render();
   },
 });
 </script>

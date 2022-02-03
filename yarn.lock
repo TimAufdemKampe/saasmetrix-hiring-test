@@ -940,6 +940,18 @@
   resolved "https://registry.yarnpkg.com/@element-plus/icons-vue/-/icons-vue-0.2.6.tgz#28e48aa4abd5b02638b41c1d95a6e7f96bb23308"
   integrity sha512-2gg7VCq4d2firgl7/aVym4Cx/wqKFwKybEQGJiiWJN4urW36+QdAEG1knqSD9qidbjhVp0Jnc9XdSTR1/4Whzw==
 
+"@fawmi/vue-google-maps@^0.9.4":
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/@fawmi/vue-google-maps/-/vue-google-maps-0.9.4.tgz#80a157de4424b3c4048a3a1700e90297a7ab0c8f"
+  integrity sha512-NTQT0QXj2IFLZl/Dz7pLN4xB6TaLTBAWQsxsbRI21nNeoMcCGRumosUrMxxia1XMYBYyy/3Zoju6JLQ8ODg/LA==
+  dependencies:
+    "@googlemaps/markerclustererplus" "^1.2.3"
+
+"@googlemaps/markerclustererplus@^1.2.3":
+  version "1.2.10"
+  resolved "https://registry.yarnpkg.com/@googlemaps/markerclustererplus/-/markerclustererplus-1.2.10.tgz#e1a97ea7ae137e00d633367be1d49f0a008fa8b3"
+  integrity sha512-HY4ev+D3kO1+9oQjtKTojxVtJIS/kSWJfry6cpKoXC97kBQc5Vguqu5x6pLnh+70N0Au+16Yl7iu4LZaIOTstw==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -8649,6 +8661,11 @@ typedarray@^0.0.6:
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
+
+types@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/types/-/types-0.1.1.tgz#860c6859d11366293f835d8c95aebcf95029838e"
+  integrity sha1-hgxoWdETZik/g12Mla68+VApg44=
 
 typescript@~4.1.5:
   version "4.1.6"

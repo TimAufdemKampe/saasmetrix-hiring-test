@@ -6,19 +6,28 @@
 import { defineComponent } from "vue";
 import ApexCharts from "apexcharts";
 import { api } from "@/api";
+import { Member } from "@/types/member.type";
 
 export default defineComponent({
   async mounted(): Promise<void> {
     const response = await api.getMembers();
-    const members = response.data.results;
+    const members: Member[] = response.data.results;
     const options = {
       chart: {
         type: "pie",
       },
       labels: ["Männlich", "Weiblich"],
       series: [
-        members.filter((member: any) => member.gender === "male").length,
-        members.filter((member: any) => member.gender === "female").length,
+        members.filter((member) => {
+          if (typeof member.gender === "string") {
+            return member.gender === "male";
+          }
+        }).length,
+        members.filter((member) => {
+          if (typeof member.gender === "string") {
+            return member.gender === "female";
+          }
+        }).length,
       ],
     };
 
@@ -27,7 +36,7 @@ export default defineComponent({
       options
     );
 
-    chart.render();
+    await chart.render();
   },
 });
 </script>

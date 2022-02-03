@@ -19,7 +19,7 @@
       <el-table-column prop="name.first" label="Vorname" />
       <el-table-column prop="name.last" label="Nachname" />
       <el-table-column prop="email" label="Email" />
-      <el-table-column prop="gender" label="Geschlecht" />
+      <el-table-column prop="gender.german" label="Geschlecht" />
       <el-table-column fixed="right" label="Operations" width="120">
         <template #default="scope">
           <router-link
@@ -64,10 +64,11 @@
 <script lang="ts">
 import { api } from "@/api";
 import { defineComponent } from "vue";
+import { Member } from "@/types/member.type";
 
 type State = {
   loading: boolean;
-  members: any[] | null;
+  members: Member[] | null;
   table: {
     search: string | undefined;
     page: number;
@@ -90,11 +91,21 @@ export default defineComponent({
   async created(): Promise<void> {
     this.loading = true;
     const response = await api.getMembers();
-    this.members = response.data.results;
+    this.members = response.data.results.map((member: Member) => {
+      if (typeof member.gender === "string") {
+        return {
+          ...member,
+          gender: {
+            default: member.gender,
+            german: member.gender === "male" ? "Männlich" : "Weiblich",
+          },
+        };
+      }
+    });
     this.loading = false;
   },
   computed: {
-    filteredTableData(): any[] {
+    filteredTableData(): Member[] {
       if (this.members) {
         return this.members
           .filter((member) => {

@@ -1,6 +1,6 @@
 <template>
   <h1>Benutzer Analytics</h1>
-  <el-row style="margin-top: 80px">
+  <el-row style="margin-top: 40px">
     <el-col :span="12" :xs="20">
       <MemberGenderChart />
     </el-col>
