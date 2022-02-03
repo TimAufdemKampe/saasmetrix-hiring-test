@@ -1,7 +1,7 @@
 <template>
   <div class="navWrapper">
     <div id="menu" :class="{ active: isActive }">
-      <el-menu mode="horizontal" @select="handleSelect" :router="true">
+      <el-menu mode="horizontal" :router="true">
         <el-menu-item id="logo">
           <logo />
         </el-menu-item>
@@ -41,9 +41,6 @@ export default defineComponent({
     };
   },
   methods: {
-    handleSelect(key, keyPath) {
-      console.log(key, keyPath);
-    },
     select: function () {
       this.isActive = !this.isActive;
     },
